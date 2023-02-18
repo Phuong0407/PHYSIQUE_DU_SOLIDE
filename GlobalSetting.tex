@@ -1,0 +1,77 @@
+%================================================Page layout setting=================================================
+\usepackage[paperwidth=19cm,paperheight=27cm,inner=1.8cm,outer=1.8cm,top=2cm,bottom=2cm,heightrounded=true]{geometry}
+\usepackage{pifont,framed,enumitem,enumerate,scrextend,indentfirst,titlesec,subfiles}
+\usepackage[backend=biber,style=alphabetic,sorting=ynt]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\usepackage[atend]{bookmark}
+\usepackage[labelfont=bf]{caption}
+\usepackage{subcaption}
+
+%================================================Text typeset setting================================================
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{lmodern}
+
+%=============================================Scientific typeset setting=============================================
+\usepackage{amsfonts,amsthm,amsmath,mathtools,amssymb,mathrsfs,bbm,esint,stmaryrd}
+\usepackage[scr=boondox,cal=esstix]{mathalpha}
+\usepackage{physics,siunitx}
+
+\usepackage{tikz,graphicx}
+
+
+
+\changefontsizes{13pt}
+\setcounter{secnumdepth}{4}
+
+%==========================================Reduced formulas used frequently==========================================
+\newcommand{\bi}[1]{\emph{\textbf{#1}}}
+
+
+%=============================================Mathematical environnement=============================================
+\newtheoremstyle{bfnote}
+    {}{}
+    {\itshape}{}
+    {\bfseries}{.}
+    { }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+\theoremstyle{bfnote}
+
+\theoremstyle{bfnote}
+\newtheorem{lemme}{Bổ đề}[chapter]
+\theoremstyle{bfnote}
+\newtheorem{theoreme}{Định lý}[chapter]
+\theoremstyle{bfnote}
+\newtheorem{desmonstration}{Chứng minh}[chapter]
+
+
+
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+
+\newcommand{\arc@arc}[2]{%
+    \sbox0{$\m@th#1#2$}%
+    \vbox{
+        \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+        \nointerlineskip
+    \box0
+    }%
+}
+\makeatother
+
+%==================================================Bookmark setting==================================================
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\bookmarksetup{
+	numbered,
+	addtohook={%
+		\ifnum\bookmarkget{level}>1 %
+		\bookmarksetup{numbered=false}%
+		\fi
+	},
+}
